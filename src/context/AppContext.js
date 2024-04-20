@@ -1,5 +1,10 @@
 import React, { createContext, useReducer } from 'react';
 
+
+export const ActionTypes = {
+    CHANGE_CURRENCY: 'CHANGE_CURRENCY',
+};
+
 // 5. The reducer - this is used to update the state, based on the action
 export const AppReducer = (state, action) => {
     let budget = 0;
@@ -64,13 +69,11 @@ export const AppReducer = (state, action) => {
             return {
                 ...state,
             };
-        case 'CHG_CURRENCY':
-            action.type = "DONE";
-            state.currency = action.payload;
+        case ActionTypes.CHANGE_CURRENCY:
             return {
-                ...state
-            }
-
+                ...state,
+                currency: action.payload,
+            };
         default:
             return state;
     }
